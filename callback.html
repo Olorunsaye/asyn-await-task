@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback</title>
+  </head>
+  <body>
+    <button onclick="downloadVideo(myCustomCallback)">Download Video</button>
+
+    <script>
+      function downloadVideo(callback) {
+        let customVideoUrl = "https://www.videezy.com/free-video/mp4-videos";
+
+        let customLink = document.createElement("a");
+        customLink.href = customVideoUrl;
+        customLink.download = "downloaded-video.mp4";
+        document.body.appendChild(customLink);
+        customLink.click();
+        document.body.removeChild(customLink);
+
+        if (typeof callback === "function") {
+          callback();
+        }
+      }
+
+      // Define the callback function
+      function myCustomCallback() {
+        alert("Custom video downloaded successfully!");
+      }
+      
+      
+    </script>
+  </body>
+</html>
